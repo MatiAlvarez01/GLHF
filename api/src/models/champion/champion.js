@@ -50,7 +50,9 @@ const championSchema = new Schema({
     games: [{
         type: Schema.ObjectId,
         ref: "Game"
-    }]
+    }],
+}, {
+    timestamps: true
 })
 
 const Champion = mongoose.model("Champion", championSchema);

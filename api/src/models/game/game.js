@@ -20,7 +20,8 @@ const gameSchema = new Schema({
         type: String
     },
     teams: [],
-
+}, {
+    timestamps: true
 })
 
 const Game = mongoose.model("Game", gameSchema);

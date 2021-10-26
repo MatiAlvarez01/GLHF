@@ -24,11 +24,9 @@ const summonerSchema = new Schema({
         type: Schema.ObjectId,
         ref: "Game"
     }],
-    champions: []
-    // champions: [{
-    //     type: Schema.ObjectId,
-    //     ref: "Champion"
-    // }]
+    champions: [],
+}, {
+    timestamps: true
 })
 
 const Summoner = mongoose.model("Summoner", summonerSchema);

@@ -5,7 +5,7 @@ import DateText from "../date/DateText";
 import ChampImg from "../imgs/ChampImg";
 
 const MainSection = styled.section`
-    background-color: violet;
+    background-color: #99CEFF;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -43,6 +43,7 @@ const Div4 = styled.div`
     width: 25%;
 `
 function Champion({details}) {
+    const numFormat = new Intl.NumberFormat('de-DE')
     return (
         <MainSection>
             <Div1>
@@ -51,7 +52,7 @@ function Champion({details}) {
             <Div2>
                 <Name>{champRef[details.championId]}</Name>
                 <Level>Nivel: {details.championLevel}</Level>
-                {details.championPointsUntilNextLevel === 0 ? <PointsNextLevel>Nivel maximo alcanzado</PointsNextLevel> : <PointsNextLevel>Prox nivel en {details.championPointsUntilNextLevel} puntos</PointsNextLevel>}
+                {details.championPointsUntilNextLevel === 0 ? <PointsNextLevel>Nivel maximo alcanzado</PointsNextLevel> : <PointsNextLevel>Prox nivel en {numFormat.format(details.championPointsUntilNextLevel)} puntos</PointsNextLevel>}
             </Div2>
             <Div3>
                 <Chest>{details.chestGranted ? "Cofre no disponible" : "Cofre disponible"}</Chest>

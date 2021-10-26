@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import styled from "styled-components";
-import { getMatchDetails, clearMatchDetails, getMatchStats, clearMatchStats } from "../../action";
-import GameDetails from "./gameDetails";
 import { loadPhrase } from "../../refs";
+import { getAllGames, clearGames } from "../../action";
+import AllGames from "./allGames";
 
 const MainSection = styled.section`
     height: 100vh;
@@ -21,27 +21,24 @@ const PhraseP = styled.p`
     color: #293845;
 `
 
-function LandGame() {
+function LandHistory() {
     const dispatch = useDispatch();
-    const { matchIdParam } = useParams();
+    const { summonerNameParam } = useParams();
     const [phrase, setPhrase] = useState();
-    const matchDetails = useSelector(state => state.matchDetails)
-    const matchStats = useSelector(state => state.matchStats)
+    const games = useSelector(state => state.games)
 
     useEffect(() => {
-        dispatch(getMatchDetails(matchIdParam))
-        dispatch(getMatchStats(matchIdParam))
         setPhrase(loadPhrase[Math.floor(Math.random() * loadPhrase.length)])
-        return(() => {
-            dispatch(clearMatchDetails())
-            dispatch(clearMatchStats())
+        dispatch(getAllGames(summonerNameParam))
+        return (() => {
             setPhrase("")
+            dispatch(clearGames())
         })
-    }, [])
+    }, [summonerNameParam])
 
     return (
         <div>
-            {matchDetails.participantsIds ? <GameDetails details={matchDetails} stats={matchStats}/> : 
+            {games.length > 0 ? <AllGames games={games}/> : 
             <MainSection>
                 <div>
                     <PhraseP>{phrase}</PhraseP>
@@ -51,4 +48,4 @@ function LandGame() {
     )
 }
 
-export default LandGame;
+export default LandHistory;

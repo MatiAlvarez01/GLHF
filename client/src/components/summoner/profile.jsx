@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 import Champion from "./champion"
 import Game from "./game";
@@ -13,7 +14,7 @@ import { actSummonerName } from "../../action"
 const MainSection = styled.section`
 `
 const ProfileDiv = styled.div`
-    background-color: #150050    
+    background-color: #bfe870;
 `
 const Name = styled.p`
     text-align: left;
@@ -22,7 +23,7 @@ const Name = styled.p`
     padding-bottom: 110px;
     font-size: 4rem;
     margin: 0;
-    color: white;
+    color: #293845;
     font-family: 'Fredoka One', cursive;
 `
 const Level = styled.p`
@@ -52,6 +53,7 @@ const DataSection = styled.section`
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    background-color: #293845;
 `
 const ChampionsDiv = styled.div`
 `
@@ -80,7 +82,15 @@ const MatchesTopDiv = styled.div`
 const ButtonHistory = styled.button`
 `
 const HistoryP = styled.p`
+    color: #99CEFF;
 `
+const StyledLink = styled(Link)`
+color: black;
+text-decoration: none;
+&:focus, &:visited, &:link, &:active {
+    text-decoration: none;
+};
+`;
 
 function Profile({details}) {
     const dispatch = useDispatch();
@@ -89,7 +99,7 @@ function Profile({details}) {
     const [loading, setLoading] = useState(false);
     const [check, setCheck] = useState(false);
     var games = []
-    
+
     if (champions.length === 0) {
         champions = details.champions
     }
@@ -126,6 +136,7 @@ function Profile({details}) {
         setLoading(false)
         console.log("Champ actualizado!");
     }
+
     return (
         <MainSection>
             <ProfileDiv>
@@ -136,6 +147,7 @@ function Profile({details}) {
                 <ProfileDataDiv>
                     <Level>{details.summonerLevel}</Level>
                     <Name>{details.name}</Name>
+                    <p>Actualizado al: </p>
                     {loading ? <ButtonAct>Actualizando...</ButtonAct> : <ButtonAct onClick={handleButtonActClick}>Actualizar perfil</ButtonAct>}
                 </ProfileDataDiv>
             </ProfileDiv>
@@ -160,7 +172,9 @@ function Profile({details}) {
                 <MatchesDiv>
                     <MatchesTopDiv>
                         <HistoryP>Ultimas 10 partidas:</HistoryP>
-                        <ButtonHistory>Ver todo el historial</ButtonHistory>
+                        <StyledLink to={`/summoner/${summonerNameParam}/history`}>
+                            <ButtonHistory>Ver todo el historial</ButtonHistory>
+                        </StyledLink>
                     </MatchesTopDiv>
                     {games.map((game) => <Game game={game} me={game.participantsStats.find((stats) => stats.summonerName === summonerNameParam)}/>)}
                 </MatchesDiv>

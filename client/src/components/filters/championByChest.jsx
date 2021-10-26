@@ -19,7 +19,8 @@ function ChampionByChest({check, setCheck}) {
     }
 
     return (
-        <div>
+        <div style={{
+            color: "#99CEFF"}}>
             <label>
                 <input 
                     type="checkbox"

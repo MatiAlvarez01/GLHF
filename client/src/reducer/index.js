@@ -8,13 +8,16 @@ import {
     GET_MATCH_DETAILS,
     CLEAR_MATCH_DETAILS,
     GET_MATCH_STATS,
-    CLEAR_MATCH_STATS
+    CLEAR_MATCH_STATS,
+    GET_ALL_GAMES,
+    CLEAR_MATCH_GAMES
 } from "../action/constants"
 var initialState = {
     summonerDetails: {},
     champions: [],
     matchDetails: {},
-    matchStats: {}
+    matchStats: {},
+    games: []
 }
 
 function reducer(state = initialState, action) {
@@ -68,6 +71,16 @@ function reducer(state = initialState, action) {
             return {
                 ...state,
                 matchStats: action.payload
+            }
+        case GET_ALL_GAMES:
+            return {
+                ...state,
+                games: action.payload
+            }
+        case CLEAR_MATCH_GAMES:
+            return {
+                ...state,
+                games: action.payload
             }
         default:
             return {

@@ -9,7 +9,9 @@ import {
     GET_MATCH_DETAILS,
     CLEAR_MATCH_DETAILS,
     GET_MATCH_STATS,
-    CLEAR_MATCH_STATS
+    CLEAR_MATCH_STATS,
+    GET_ALL_GAMES,
+    CLEAR_MATCH_GAMES
 } from "./constants"
 
 export function searchSummonerName(summonerName) {
@@ -154,6 +156,31 @@ export function clearMatchStats() {
         return dispatch({
             type: CLEAR_MATCH_STATS,
             payload: {}
+        })
+    }
+}
+
+export function getAllGames(summonerName) {
+    return function(dispatch) {
+        return axios.post("http://localhost:3001/matchs/all", {summonerName: summonerName})
+            .then(allGames => {
+                dispatch({
+                    type: GET_ALL_GAMES,
+                    payload: allGames.data
+                })
+            })
+            .catch(err => {
+                console.log("ERROR en getAllGames:")
+                console.log(err)
+            })
+    }
+}
+
+export function clearGames() {
+    return function(dispatch) {
+        return dispatch({
+            type: CLEAR_MATCH_GAMES,
+            payload: []
         })
     }
 }

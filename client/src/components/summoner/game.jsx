@@ -15,12 +15,12 @@ const MainSection = styled.section`
     align-content: center;
     align-items: center;
     justify-content: space-evenly;
-    background-color: coral;
+    background-color: #99CEFF;
     border: solid 1px black;
     margin: 2px;
 
     &:hover {
-        border: solid 2px gold;
+        border: solid 2px #bfe870;
     }
 `
 const ChampImgDiv = styled.div`
@@ -29,7 +29,7 @@ const ChampImgDiv = styled.div`
 `
 const ChampImg = styled.img`
     border-radius: 65px;
-    border: solid 2px gold;
+    border: solid 2px #bfe870;
 `
 const ChampLvl = styled.span`
     position: relative;
@@ -40,7 +40,7 @@ const ChampLvl = styled.span`
     width: 15%;
     border-radius: 35px;
     padding: 2px;
-    border: solid 2px gold;
+    border: solid 2px #bfe870;
 `
 const ResultDiv = styled.div`
     display: flex;
@@ -101,12 +101,19 @@ const Gold = styled.p`
 `
 const ItemsDiv = styled.div`
 `
+const StyledLink = styled(Link)`
+    color: black;
+    text-decoration: none;
+    &:focus, &:visited, &:link, &:active {
+        text-decoration: none;
+    };
+`;
 
 
 function Game({game, me}) {
     //const [me, setMe] = useState(game.participantsStats.find((stats) => stats.summonerName === summonerName))
     return(
-        <Link to={`/match/${game.matchId}`}>
+        <StyledLink to={`/match/${game.matchId}`}>
             <MainSection>
                 <ChampImgDiv>
                     <ChampImg src={`/championicon/${me.championName}.png`}/>
@@ -159,7 +166,7 @@ function Game({game, me}) {
                     <DateText unixTime={game.gameDate} />
                 </StatsDiv2>
             </MainSection>
-        </Link>
+        </StyledLink>
     )
 }
 

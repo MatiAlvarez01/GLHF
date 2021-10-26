@@ -3,9 +3,8 @@ import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import PlayerLeft from "./playerLeft";
 import PlayerRight from "./playerRigth";
-
-const modeRef = {0: "Partida Personalizada", 420: "Clasificatoria Solo/Dúo", 430: "Normal", 440: "Clasificatoria Flexible", 450: "ARAM", 700: "Clash", 900: "URF", 
-1020: "Uno para Todos", 2000: "Tutorial 1", 2010: "Tutorial 2", 2020: "Tutorial 3"}
+import DateText from "../date/DateText";
+import { modeRef } from "../../refs";
 
 var MainSection = styled.section`
     display: flex;
@@ -65,6 +64,7 @@ function GameDetails({details, stats}) {
     const [team100, setTeam100] = useState(details.participantsStats.slice(0, 5))
     const [team200, setTeam200] = useState(details.participantsStats.slice(5, 10))
     const [select, setSelect] = useState(false)
+    const numFormat = new Intl.NumberFormat('de-DE')
     if (select === false) {
         MainSection = styled.section`
         background-image: url("/backgroundGameDetails2.png");
@@ -78,17 +78,6 @@ function GameDetails({details, stats}) {
         `
     }
 
-    var a = new Date(details.gameDate);
-    var months = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
-    var year = a.getFullYear();
-    var month = months[a.getMonth()];
-    var date = a.getDate();
-    var hour = a.getHours() < 10 ? `0${a.getHours()}` : a.getHours();
-    var min = a.getMinutes() < 10 ? `0${a.getMinutes()}` : a.getMinutes();
-    var time = `${date} ${month} ${year} - ${hour}:${min}hrs`
-
-    console.log("MATCH DETAILS: ", details)
-
     return (
         <MainSection>
             <VolverButton onClick={() => history.goBack()}>Volver</VolverButton>
@@ -99,19 +88,19 @@ function GameDetails({details, stats}) {
             <DetailsSection>
                 <MatchDetails>
                     <p>{modeRef[details.gameMode]}</p>
-                    <p>{time}</p>
+                    <DateText unixTime={details.gameDate}/>
                     <p>{Math.floor(details.gameDuration / 60)} minutos</p>
                     <p>Version: {details.gameVersion}</p>
                 </MatchDetails>
                 <StatsDiv>
                     <Team100StatsDiv>
                         <p>{stats.scoreBlue}</p>
-                        <p>{stats.goldBlue}</p>
+                        <p>{numFormat.format(stats.goldBlue)}</p>
                         <p>{stats.baronBlue}</p>
                         <p>{stats.dragonBlue}</p>
                         <p>{stats.objStolenBlue}</p>
-                        <p>{stats.totalDamageBlue}</p>
-                        <p>{stats.totalCCBlue}</p>
+                        <p>{numFormat.format(stats.totalDamageBlue)}</p>
+                        <p>{numFormat.format(stats.totalCCBlue)}</p>
                         <p>{stats.visionScoreBlue}</p>
                         <p>{stats.wardsBlue}</p>
                         <p>{stats.torresBlue}</p>
@@ -132,12 +121,12 @@ function GameDetails({details, stats}) {
                     </VsDiv>
                     <Team200StatsDiv>
                         <p>{stats.scoreRed}</p>
-                        <p>{stats.goldRed}</p>
+                        <p>{numFormat.format(stats.goldRed)}</p>
                         <p>{stats.baronRed}</p>
                         <p>{stats.dragonRed}</p>
                         <p>{stats.objStolenRed}</p>
-                        <p>{stats.totalDamageRed}</p>
-                        <p>{stats.totalCCRed}</p>
+                        <p>{numFormat.format(stats.totalDamageRed)}</p>
+                        <p>{numFormat.format(stats.totalCCRed)}</p>
                         <p>{stats.visionScoreRed}</p>
                         <p>{stats.wardsRed}</p>
                         <p>{stats.torresRed}</p>

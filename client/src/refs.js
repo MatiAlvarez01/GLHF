@@ -12,9 +12,11 @@ export const champRef = {266: 'Aatrox', 103: 'Ahri', 84: 'Akali', 166: "Akshan",
     29: 'Twitch', 77: 'Udyr', 6: 'Urgot', 110: 'Varus', 67: 'Vayne', 45: 'Veigar', 161: 'VelKoz', 711:"Vex", 254: 'Vi', 234: 'Viego', 112: 'Viktor', 8: 'Vladimir', 106: 'Volibear', 19: 'Warwick', 
     498: 'Xayah', 101: 'Xerath', 5: 'Xin Zhao', 157: 'Yasuo', 777: 'Yone', 83: 'Yorick', 350: 'Yuumi', 154: 'Zac', 238: 'Zed', 115: 'Ziggs', 26: 'Zilean', 142: 'Zoe', 143: 'Zyra'};
 export const modeRef = {0: "Partida Personalizada", 420: "Clasificatoria Solo/Dúo", 430: "Normal", 440: "Clasificatoria Flexible", 450: "ARAM", 700: "Clash", 900: "URF", 
-    1020: "Uno para Todos", 2000: "Tutorial 1", 2010: "Tutorial 2", 2020: "Tutorial 3"}
+    1020: "Uno para Todos", 2000: "Tutorial 1", 2010: "Tutorial 2", 2020: "Tutorial 3"};
 export const summonerSpellRef = {1: "SummonerBoost", 3: "SummonerExhaust", 4: "SummonerFlash", 6: "SummonerHaste", 7: "SummonerHeal", 11: "SummonerSmite", 12: "SummonerTeleport",
     13: "SummonerMana", 14: "SummonerDot", 21: "SummonerBarrier", 30: "SummonerPoroRecall", 31: "SummonerPoroThrow", 32: "SummonerSnowball", 39: "SummonerSnowURFSnowball_Mark", 
-    54: "Summoner_UltBook_Placeholder"}
-export const runesRef = {8000: "Precision", 8100: "Domination", 8200: "Sorcery", 8300: "Whimsy", 8400: "Resolve"}
-export const positionRef = {"TOP": "SUPERIOR", "JUNGLE": "JUNGLA", "MIDDLE": "MEDIO", "BOTTOM": "INFERIOR", "UTILITY": "SOPORTE"}
+    54: "Summoner_UltBook_Placeholder"};
+export const runesRef = {8000: "Precision", 8100: "Domination", 8200: "Sorcery", 8300: "Whimsy", 8400: "Resolve"};
+export const positionRef = {"TOP": "SUPERIOR", "JUNGLE": "JUNGLA", "MIDDLE": "MEDIO", "BOTTOM": "INFERIOR", "UTILITY": "SOPORTE"};
+export const loadPhrase = ["Buscando a Teemo...", "Alimentando a Tahm Kench...", "Bebiendo con Gragas...", "Girando con Garen...", "Caitlyn corriendo a Jinx...", 
+"Agarrando la linterna de Thresh...", "Llorando con Amumu..."]

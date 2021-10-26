@@ -11,16 +11,16 @@ const HomeSection = styled.section`
 const TitleDiv = styled.div`
     padding-top: 5%;
     text-align: center;
-    background-color: #150050;
+    background-color: #bfe870;
 `
 const Title = styled.p`
     margin: 0;
     font-family: 'Fredoka One', cursive;
     font-size: 10rem;
-    color: grey;
+    color: #293845;
 `
 const FormDiv = styled.div`
-    background-color: #150050;
+    background-color: #bfe870;
     border-radius: 0 0 0 200px;
 `
 const Form = styled.form`
@@ -38,29 +38,31 @@ const Input = styled.input`
     border-radius: 25px;
     border: none;
     padding: 4px 25px;
+    color: #293845;
 `
 const Button = styled.button`
     padding: 10px 25px;
     font-size: 1rem;
     border-radius: 25px;
-    border: solid 1px white;
-    background-color: #150050;
-    color: white;
+    border: solid 1px #293845;
+    background-color: #bfe870;
+    color: #293845;
     :hover {
-        border: solid 1px #3F0071;
-        background-color: #3F0071;
+        border: solid 1px #293845;
+        background-color: #293845;
+        color: white;
     }
 `
 const StatsDiv = styled.div`
-    background-color: #3F0071;
+    background-color: #293845;
     height: 58vh;
     border-radius: 0 200px 0 0;
 `
 const BackgroundColor1 = styled.div`
-    background-color: #3F0071;
+    background-color: #293845;
 `
 const BackgroundColor2 = styled.div`
-    background-color: #150050;
+    background-color: #bfe870;
 `
 
 function Home() {
@@ -77,7 +79,6 @@ function Home() {
         dispatch(searchSummonerName(summonerName))
         setSummonerName("")
     }
-
     return (
         <HomeSection>
             <TitleDiv>
